@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 import "./globals.css";
 import Menu from "@/components/Menu";
 import Apps from "@/components/Apps";

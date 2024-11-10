@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ColorRing } from "react-loader-spinner";
 
 interface WindowProps {
@@ -12,18 +12,18 @@ const Window = (props: WindowProps) => {
     const windowRef = useRef<HTMLDivElement>(null);
     const closeButtonRef = useRef<HTMLSpanElement>(null);
     const frameRef = useRef<HTMLDivElement>(null);
-
     const [loading, setLoading] = useState(false)
-    document.addEventListener('click', (e: MouseEvent) => {
-        if (!frameRef.current || !windowRef.current) return;
-        if ((e.composedPath().includes(frameRef.current) && !e.composedPath().includes(windowRef.current)
-            ||
-            (closeButtonRef.current && e.composedPath().includes(closeButtonRef.current)))) {
-            setLoading(true)
-            window.location.href = "/"
-        }
+    useEffect(() => {
+        document.addEventListener('click', (e: MouseEvent) => {
+            if (!frameRef.current || !windowRef.current) return;
+            if ((e.composedPath().includes(frameRef.current) && !e.composedPath().includes(windowRef.current)
+                ||
+                (closeButtonRef.current && e.composedPath().includes(closeButtonRef.current)))) {
+                setLoading(true)
+                window.location.href = "/"
+            }
+        })
     })
-
     return (
         <div ref={frameRef} className="absolute h-full w-full top-0 left-0 z-10 bg-[rgba(0,0,0,0.3)] ">
             <div ref={windowRef} className='

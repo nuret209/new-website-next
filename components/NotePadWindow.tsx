@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ColorRing } from 'react-loader-spinner'
 
 const NotePadWindow = () => {
@@ -20,12 +20,15 @@ const NotePadWindow = () => {
             URL.revokeObjectURL(url);
         } else setNote("Note can't be empty! Please write something. ");
     }
-    document.addEventListener('click', (e: MouseEvent) => {
-        const parentWindow = windowRef.current?.parentElement?.children[2].children[0];
-        if (!windowRef.current || !parentWindow) return;
-        if (e.composedPath().includes(parentWindow)) 
-            window.location.href = "/systemapps";
-
+    useEffect(() => {
+        document.addEventListener('click', (e: MouseEvent) => {
+            const parentWindow = windowRef.current?.parentElement?.children[2].children[0];
+            if (!windowRef.current || !parentWindow) return;
+            if (e.composedPath().includes(parentWindow)) {
+                window.location.href = "/systemapps";
+                setLoading(true);
+            }
+        })
     })
     return (
         <div ref={windowRef} className='
@@ -51,7 +54,7 @@ const NotePadWindow = () => {
                         </div>}
                     </span>
                     <h1 className="bg-white flex items-center h-4 font-[ChicagoFLF] px-2">Notepad</h1>
-                    <img src='/images/saveIcon.svg' onClick={saveNote} className='h-4 w-4 mr-3' />
+                    <img src='/images/saveIcon.svg' onClick={saveNote} className='h-4 cursor-pointer w-4 mr-3' />
                     <div className="z-[-50] absolute top-0 left-0 h-full w-full">
                         <div className="flex flex-col gap-[2px] ">
                             {Array.from({ length: 6 }, (_, i) => i = i + 1).map(

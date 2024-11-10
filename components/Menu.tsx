@@ -83,9 +83,8 @@ const Menu = () => {
                 break;
         }
     }
-
     return (
-        <div className='px-2 text-[#222] text-sm border-black border-b-2 selection:bg-transparent bg-white flex font-[ChicagoFLF] cursor-default'>
+        <div className='px-2 text-[#222] text-sm sm:text-base border-black border-b-2 selection:bg-transparent bg-white flex font-[ChicagoFLF] cursor-default'>
             {AlertElement}
             {alertShown && <Alert message={alertMessage} buttonTitle={AlertButtonTitle} setAlertMessage={setAlertResult} />}
             <div className='group/main relative'>

@@ -1,6 +1,9 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { ColorRing } from "react-loader-spinner";
 
 const CalculatorWindow = () => {
+    const [loading, setLoading] = useState(false);
+
     const [firstNumber, setFirstNumber] = useState(0);
     const [secondNumber, setSecondNumber] = useState(0);
     const [secondOperation, setSecondOperation] = useState(false);
@@ -46,17 +49,32 @@ const CalculatorWindow = () => {
             setFirstNumber(0);
     }
     const windowRef = useRef<HTMLDivElement>(null);
-    document.addEventListener('click', (e: MouseEvent) => {
-        const parentWindow = windowRef.current?.parentElement?.children[2].children[0];
-        if (!windowRef.current || !parentWindow) return;
-        if(e.composedPath().includes(parentWindow))
-            window.location.href= "/systemapps";
-       
+    useEffect(() => {
+        document.addEventListener('click', (e: MouseEvent) => {
+            const parentWindow = windowRef.current?.parentElement?.children[2].children[0];
+            if (!windowRef.current || !parentWindow) return;
+            if (e.composedPath().includes(parentWindow)) {
+                setLoading(true)
+                window.location.href = "/systemapps";
+            }
+        })
     })
     return (
         <div ref={windowRef} className='absolute left-24 top-24 z-[999] w-[122px] h-[193px]  bg-[#222] rounded-lg p-1'>
             <div className='text-white flex px-1 gap-2 '>
-                <span className='h-[13px] w-[13px] border-white border' onClick={() => window.location.href = "/systemapps"}></span>
+                <span className='h-[13px] w-[13px] border-white border' onClick={() => { window.location.href = "/systemapps"; setLoading(true) }}>
+                    {loading && <div className="relative left-[-2px] top-[-2px]">
+                        <ColorRing
+                            visible={true}
+                            height="16"
+                            width="16"
+                            ariaLabel="color-ring-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="color-ring-wrapper"
+                            colors={['#fff', '#ccc', '#aaa', '#ddd', '#111']}
+                        />
+                    </div>}
+                </span>
                 <h1 className='flex mt-[-3px]   font-[ChicagoFLF] text-sm'>Calculator</h1>
             </div>
             <div className='bg-[url("/images/calculatorBg.svg")] bg-white h-[calc(100%-18px)] p-2 font-[Verdana]'>

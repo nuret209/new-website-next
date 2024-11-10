@@ -16,11 +16,9 @@ const FileFolderIcon = (props: FileFolderIconProps) => {
                 setFocused(false);
             }
         };
-
         if (typeof window !== 'undefined') {
             window.addEventListener("click", handleClickOutside);
         }
-
         return () => {
             if (typeof window !== 'undefined') {
                 window.removeEventListener("click", handleClickOutside);

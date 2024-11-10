@@ -1,15 +1,18 @@
-import React, { useRef } from 'react'
+import  { useEffect, useRef, useState } from 'react'
 import { ColorRing } from 'react-loader-spinner';
 
 const AboutThisOSWindow = () => {
-    const [loading, setLoading] = React.useState(false);
+    const [loading, setLoading] = useState(false);
     const windowRef = useRef<HTMLDivElement>(null);
-    document.addEventListener('click', (e: MouseEvent) => {
-        const parentWindow = windowRef.current?.parentElement?.children[2].children[0];
-        if (!windowRef.current || !parentWindow) return;
-        if (e.composedPath().includes(parentWindow))
-            window.location.href = "/systemapps";
+    useEffect(() => {
+        if (document !== undefined || document !== null)
+            document.addEventListener('click', (e: MouseEvent) => {
+                const parentWindow = windowRef.current?.parentElement?.children[2].children[0];
+                if (!windowRef.current || !parentWindow) return;
+                if (e.composedPath().includes(parentWindow))
+                    window.location.href = "/systemapps";
 
+            })
     })
     return (
         <div ref={windowRef} className='
@@ -36,8 +39,8 @@ const AboutThisOSWindow = () => {
                     </span>
                     <h1 className="bg-white flex items-center h-4 font-[ChicagoFLF] px-2">About This Mac</h1>
                     <a href='https://www.computinghistory.org.uk/det/11814/Apple-Macintosh-Plus-1MB/' className="h-4 w-4 bg-white  mr-3 block border-2 border-[#222]"><span className="h-2 w-2 ml-[-2px] mt-[-2px] block border-2 border-[#222]"></span></a>
-                    
-                    
+
+
                     <div className="z-[-50] absolute top-0 left-0 h-full w-full">
                         <div className="flex flex-col gap-[2px] ">
                             {Array.from({ length: 6 }, (_, i) => i = i + 1).map(
