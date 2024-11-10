@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 import Menu from "@/components/Menu";
 import Apps from "@/components/Apps";
-import Head from "next/head";
+
 export const metadata: Metadata = {
   title: "Nurettin Öğüç",
   description: "Nurettin Öğüç Personal Website",
@@ -19,9 +19,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/images/favicon.ico" sizes="any" />
-      </Head>
       <body
         className={`antialiased relative`}
       >
@@ -29,6 +26,7 @@ export default function RootLayout({
           <Menu />
           <Apps />
           {children}
+          <SpeedInsights />
         </div>
       </body>
     </html>
