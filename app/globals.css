@@ -2,20 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+@font-face {
+  font-family: "ChicagoFLF";
+  src: local("ChicagoFLF"),
+    url("./fonts/ChicagoFLF.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: "Verdana";
+  src: local("Verdana"),
+    url("./fonts/Verdana.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: "Times New Roman";
+  src: local("Times New Roman"),
+    url("./fonts/TurkishTimesNewRoman.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+body,
+html {
+  height: 100%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("/images/bg.png");
+  background-repeat: repeat;
 }
