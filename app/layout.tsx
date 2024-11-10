@@ -4,7 +4,6 @@ import "./globals.css";
 import Menu from "@/components/Menu";
 import Apps from "@/components/Apps";
 import Head from "next/head";
-import Link from "next/link";
 export const metadata: Metadata = {
   title: "Nurettin Öğüç",
   description: "Nurettin Öğüç Personal Website",
