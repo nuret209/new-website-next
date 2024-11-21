@@ -8,7 +8,6 @@ const ReadMeWindow = () => {
                 <div className='flex justify-between max-h-[calc(100%-48px)]'>
                     <div className='overflow-auto max-w-[calc(100%-24px)] px-12 py-5'>
                         <h1 className='text-5xl font-["Times_New_Roman",_sans-serif] my-3'>Nurettin Öğüç</h1>
-                        <h2 className='font-bold text-lg my-5'>Even the darkest night doesn't last forever.</h2>
                         <span className='font-sans flex flex-col gap-y-5'><p>Hello! I'm Nurettin Öğüç from İstanbul, studying at Bahçelievler Anadolu High School. I work as a full-stack developer, but I see embedded systems as my main area. The childlike curiosity that started with the disassembly of old computers has changed into the professional way of joining the elegant front side and low-level programming. During the past 2 years, I have been involved with different projects associated with my microprocessor programming skills, and for the last 4 years, I have taken a special interest in the development of responsive web-based applications.
                         </p>
                             <p>It has really been an adventure from the whole technical standpoint. Creating frictionless user experiences is what my day-to-day life would consist of: leveraging React and modern JavaScript frameworks to get the best results out of them; and with Next.js and Tailwind, I can do great stuff on both the UI and backend side. My true technical passion, however, lies in programming microprocessors.
