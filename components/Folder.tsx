@@ -19,7 +19,7 @@ const Folder = (props: FolderProps) => {
             </div>
             <div className='flex relative flex-col h-full justify-between'>
                 <div className='flex justify-between h-full  border-[#222]'>
-                    <div className='flex gap-x-12 flex-wrap w-full px-7 py-5 overflow-clip'>
+                    <div className='flex gap-x-12 flex-wrap w-full px-7 py-5 overflow-clip  gap-6 flex-col sm:flex-row'>
                         {children.map(child => child)}
                     </div>
                     <Slider position={50} />

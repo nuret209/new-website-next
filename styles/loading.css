@@ -1,0 +1,91 @@
+/* Loading screen ana container */
+.crt-loading {
+  overflow: hidden;
+  animation:
+    crtFlicker 0.15s infinite,
+    crtBoot 1.2s ease-out forwards;
+  transform-origin: center;
+}
+
+/* Ortadaki yazı glow efekti */
+.crt-text {
+  text-shadow:
+    0 0 5px rgba(255,255,255,0.8),
+    0 0 10px rgba(255,255,255,0.5),
+    0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Scanline efekti */
+.crt-loading::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Vignette */
+.crt-loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle,
+    transparent 50%,
+    rgba(0,0,0,0.5) 100%
+  );
+
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* CRT açılma animasyonu */
+
+/* Hafif ekran titremesi */
+@keyframes crtFlicker {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.98;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+/* CRT kapanma efekti */
+.crt-close {
+  animation: crtShutdown 0.8s ease-in forwards;
+}
+
+@keyframes crtShutdown {
+  0% {
+    transform: scaleY(1);
+    opacity: 1;
+    filter: brightness(1);
+  }
+
+  60% {
+    transform: scaleY(0.03);
+    opacity: 1;
+    filter: brightness(3);
+  }
+
+  100% {
+    transform: scaleY(0);
+    opacity: 0;
+    filter: brightness(8);
+  }
+}

@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useRef, useState } from "react";
 import { ColorRing } from "react-loader-spinner";
 
@@ -20,7 +21,7 @@ const Window = (props: WindowProps) => {
                 ||
                 (closeButtonRef.current && e.composedPath().includes(closeButtonRef.current)))) {
                 setLoading(true)
-                window.location.href = "/"
+                window.location.href = "/?noloading=true"
             }
         })
     })

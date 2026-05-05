@@ -4,24 +4,99 @@ import Alert from "./Alert";
 import Restart from "./Restart";
 import Shutdown from "./Shutdown";
 import { useRouter } from "next/navigation";
+import "@/styles/hover.css"
 
 const Menus = [
-    {
-        name: "LinkedIn",
-        link: "https://www.linkedin.com/in/nurettin-%C3%B6%C4%9F%C3%BC%C3%A7-281180238/",
+   
+     {
+        "name": "File",
+        "submenus": [
+
+            {
+                name: "New File",
+                link: "#",
+            },
+            {
+                name: "Open...",
+                link: "#",
+            },
+            {
+                name: "Save",
+                link: "#",
+            },
+            {
+                name: "Export",
+                link: "#",
+            },
+        ]
+    },
+     {
+        "name": "Edit",
+        "submenus": [
+
+            {
+                name: "Undo",
+                link: "#",
+            },
+            {
+                name: "Redo",
+                link: "#",
+            },
+            {
+                name: "Cut",
+                link: "#",
+            },
+            {
+                name: "Copy",
+                link: "#",
+            },
+              {
+                name: "Paste",
+                link: "#",
+            },
+        ]
+
     },
     {
-        name: "GitHub",
-        link: "https://github.com/nuret209",
+        "name": "View",
+        "submenus": [
+
+            {
+                name: "Zoom In",
+                link: "#",
+            },
+            {
+                name: "Zoom Out",
+                link: "#",
+            },
+            {
+                name: "Fullscreen",
+                link: "#",
+            },
+        ]
     },
-    {
-        name: "Email",
-        link: "mailto:noguc4200@gmail.com",
-    },
-    {
-        name: "Instagram",
-        link: "https://www.instagram.com/nnurett/",
-    },
+     {
+        "name": "Contact",
+        "submenus": [
+
+            {
+                name: "LinkedIn",
+                link: "https://www.linkedin.com/in/nurettin-%C3%B6%C4%9F%C3%BC%C3%A7-281180238/",
+            },
+            {
+                name: "GitHub",
+                link: "https://github.com/nuret209",
+            },
+            {
+                name: "Email",
+                link: "mailto:noguc4200@gmail.com",
+            },
+            {
+                name: "Instagram",
+                link: "https://www.instagram.com/nnurett/",
+            },
+        ]
+    }
 ]
 const LogoPages = [
     [
@@ -99,10 +174,21 @@ const Menu = () => {
                     ))}
                 </div>
             </div>
-            <div className='flex'>
-                {Menus.map((menu, i) => (
-                    <a key={i} href={menu.link} className='hover:bg-[#222] hover:text-white flex px-2 items-center'>{menu.name}</a>
-                ))}
+            <div className=' relative flex'>
+              {Menus.map((page, i) => (
+            <div key={i} className='relative'> 
+                <div className='hovermenu px-2 py-1 z-20 hover:bg-[#ddd] flex items-center justify-center text-black h-full hover:invert cursor-default'>{page.name}</div>
+                <div className='dropmenu absolute hidden z-30 content-none top-[calc(100%)] bg-white text-[#222] flex-col border-2 border-[#222]'>
+                
+                        <div className='flex flex-col border-dotted border-b-2 border-gray-900 last:border-b-0 py-2 first:pt-0 last:pb-0'>
+                            {page.submenus.map((p, j) => (
+                                <a key={j} href={p.link} className='whitespace-nowrap py-[2px] px-2 cursor-pointer hover:bg-[#222] hover:text-white'>{p.name}</a>
+                            ))}
+                        </div>
+                   
+                </div>
+                </div>
+             ))}
             </div>
         </div>
     );
