@@ -1,13 +1,11 @@
 "use client"
 
-import LoadingScreen from "@/components/LoadingScreen"
-import { useSearchParams } from "next/navigation";
+import LoadingScreen from "@/components/LoadingScreen";
 const Home = () => {
-  const searchParams = useSearchParams();
-  const noLoading = searchParams.get("noloading");
+
   return (
     <>
-    {noLoading !== "true" && <LoadingScreen/>}
+      <LoadingScreen />
     </>
   )
 }
